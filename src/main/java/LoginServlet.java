@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class LoginServlet
  */
-@WebServlet("/LoginServlet")
+@WebServlet({"/LoginServlet","/login"})
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -40,14 +40,13 @@ public class LoginServlet extends HttpServlet {
 	    String name = request.getParameter("name");
 	    String pass = request.getParameter("pass");
 
-	    String result = "";
-	    String loginMsg = "IDまたはPASSが間違っています";
+	    String msg = "IDまたはPASSが間違っています";
 	    String nameMsg = "IDは必須です";
 	    String passMsg = "PASSは必須です";
+	    String path = "/login.jsp";
 	    int frag[] = {0,0};
-
-	    if (name != null && !name.isEmpty()) {
-	    	result = "ようこそ、" + name + "さん";
+	
+	    if (!Utility.isNullOrEmpty(name)) {
 	    	frag[0] = 1;
 	    	
 	    }else {
@@ -55,7 +54,7 @@ public class LoginServlet extends HttpServlet {
 	    	
 	    }
 	    
-	    if (pass != null && !pass.isEmpty()) {
+	    if (!Utility.isNullOrEmpty(pass)) {
 	    	frag[1] = 1;
 	    	
 	    }else {
@@ -65,19 +64,20 @@ public class LoginServlet extends HttpServlet {
 	    
 	    if(frag[0] == 1 && frag[1] == 1) {
 	    	if(name.equals("axiz") && pass.equals("axizuser")) {
-	    		
-	    		request.setAttribute("result", result);
-	    		request.getRequestDispatcher("/result.jsp").forward(request, response);
+	    		msg = "ようこそ、" + name + "さん";
+	    		path = "/result.jsp";
+	    		request.setAttribute("result", msg);
+	    		//request.getRequestDispatcher(path).forward(request, response);
 	    		
 	    	}else {
-	    		request.setAttribute("msg", loginMsg);
+	    		request.setAttribute("msg", msg);
 	    		
 	    	}
 	    	
 	    
 	    
 	    }
-		request.getRequestDispatcher("/login.jsp").forward(request, response);	
+		request.getRequestDispatcher(path).forward(request, response);	
 	    
 	}
 

@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Java応用_発展問題2</title>
+<title>ログイン画面</title>
 <style>
 body {
   border: solid 2px #000080;
@@ -19,10 +19,9 @@ body {
 </style>
 </head>
 <body>
-	<h1>ログイン画面</h1>
+	<form action="./login" method="post">
+	<div>${requestScope.msg}</div>
 	
-	<form action="./LoginServlet" method="post">
-	<p>${requestScope.msg}</p>
     <label>ID：</label>
     <input type="text" name="name"> ${requestScope.name}
     

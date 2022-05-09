@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Java応用_発展問題2</title>
+<title>結果画面</title>
 <style>
 body {
   border: solid 2px #000080;
@@ -19,7 +19,6 @@ body {
 </style>
 </head>
 <body>
-	<h1>結果画面</h1>
 	<p>${requestScope.result}</p>
 	<form action="./login.jsp" method="post">
     	<button type="submit">戻る</button>
