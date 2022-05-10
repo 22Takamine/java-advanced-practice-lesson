@@ -40,7 +40,25 @@ public class InputServlet extends HttpServlet {
             throws ServletException, IOException {
         
     	// ここに必要な処理を記述してください。
+    	request.setCharacterEncoding("UTF-8");
+    	String birthPlace = request.getParameter("birthPlace");
+    	String msg = "";
     	
+    	Human human = new Human();
+    	Human japan = new Japanese();
+    	Human america = new Amerian();
+    	
+    	if(Utility.isNullOrEmpty(birthPlace)) {
+    		msg = human.returnHumanInfo();
+    		
+    	}else if(birthPlace.equals("japan")) {
+    		msg = japan.returnHumanInfo();
+    		
+    	}else if(birthPlace.equals("america")) {
+    		msg = america.returnHumanInfo();
+    		
+    	}
+    	request.setAttribute("info", msg);
 
 
         // 結果画面へ

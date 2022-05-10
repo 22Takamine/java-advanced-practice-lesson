@@ -32,7 +32,7 @@ public class Japanese extends Human {
 	
 	public String returnBirthPlaceInfo() {
         // 出身地用の文字列
-        String msg = "出身地:日本";
+        String msg = "出身地:日本" + "日本の公用語は「" + language+ "」です";
 
         // 作成した文字列を返却
         return msg;
