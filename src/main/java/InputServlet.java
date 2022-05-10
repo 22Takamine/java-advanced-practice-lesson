@@ -40,7 +40,7 @@ public class InputServlet extends HttpServlet {
             throws ServletException, IOException {
         
     	// ここに必要な処理を記述してください。
-    	Human america = new Amerian();
+    	
 
 
         // 結果画面へ
