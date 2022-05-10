@@ -23,7 +23,7 @@ body {
 </head>
 <body>
 
-  <h1>Java応用 - 演習問題1</h1>
+  <h1>Java応用 - 演習問題8</h1>
 
   <h2>ゲームアプリ実行ページ</h2>
 	
@@ -38,6 +38,10 @@ body {
   <form action="./StartAppServlet" method="post">
     <label>ユーザ名：</label>
     <input type="text" name="name">
+    <br>
+    <label>アプリ：</label>
+    <input type = "radio" name="type" value="トランプ" checked>トランプ
+    <input type = "radio" name="type" value="ゲーム">ゲーム
     <br>
     <button type="submit">実行</button>
   </form>
