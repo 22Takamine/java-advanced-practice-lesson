@@ -15,6 +15,7 @@ public abstract class GameApp implements App{
 	public String start(String name){
 		String mes = "";
 		mes = name + "さんと" + item + "でゲームを開始します。";
+		mes += play();
 		return mes;
 	}
 

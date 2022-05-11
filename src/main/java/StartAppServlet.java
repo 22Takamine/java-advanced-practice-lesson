@@ -51,14 +51,13 @@ public class StartAppServlet extends HttpServlet {
 	    String result = "";
 	    GameApp card = new CardGameApp(type);
 	    GameApp darts = new DartsGameApp(type);
+	    
 	    if(name != null && !name.isEmpty()) {
 	    	if(type.equals("トランプ")) {
 		    	result = card.start(name);
-		    	result += card.play();
 		    	
 		    }else if(type.equals("ダーツ")) {
 		    	result = darts.start(name);
-		    	result += darts.play();
 		    	
 		    }else if(type.equals("時計")) {
 		    	result = clock.start(name);

@@ -14,6 +14,10 @@ public class CardGameApp extends GameApp{
 		String msg = "ババ抜きを行います。";
 		return msg;
 	}
+	
+	
+	
+	
 //	public String start(String name){
 //		String mes = "";
 //		String add = "";
