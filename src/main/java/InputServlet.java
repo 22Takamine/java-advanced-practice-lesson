@@ -85,6 +85,7 @@ public class InputServlet extends HttpServlet {
     	    	}else if(birthPlace.equals("america")) {
     	    		Human america = new Amerian(name,language);
     	    		msg = america.returnHumanInfo();
+    	    		//
     	    		
     	    	}
     		}
