@@ -52,7 +52,7 @@ public class Human {
      */
     public String returnBirthPlaceInfo() {
         // 出身地用の文字列
-        String msg = "出身地:不明";
+        String msg = "出身地:不明。";
 
         // 作成した文字列を返却
         return msg;

@@ -42,24 +42,56 @@ public class InputServlet extends HttpServlet {
     	// ここに必要な処理を記述してください。
     	request.setCharacterEncoding("UTF-8");
     	String birthPlace = request.getParameter("birthPlace");
+    	String name = request.getParameter("name");
+    	String language = request.getParameter("language");
+    	String btn = request.getParameter("btn");
     	String msg = "";
     	
-    	Human human = new Human();
-    	Human japan = new Japanese();
-    	Human america = new Amerian();
     	
-    	if(Utility.isNullOrEmpty(birthPlace)) {
-    		msg = human.returnHumanInfo();
-    		
-    	}else if(birthPlace.equals("japan")) {
-    		msg = japan.returnHumanInfo();
-    		
-    	}else if(birthPlace.equals("america")) {
-    		msg = america.returnHumanInfo();
+    	if(!Utility.isNullOrEmpty(btn)) {
+    		if(btn.equals("simple")) {
+    			
+    	    	if(Utility.isNullOrEmpty(birthPlace)) {
+    	    		Human human = new Human();
+    	    		msg = human.returnHumanInfo();
+    	    		
+    	    	}else if(birthPlace.equals("japan")) {
+    	    		Human japan = new Japanese();
+    	    		msg = japan.returnHumanInfo();
+    	    		
+    	    	}else if(birthPlace.equals("america")) {
+    	    		Human america = new Amerian();
+    	    		msg = america.returnHumanInfo();
+    	    		
+    	    	}
+    			
+    		}else if(btn.equals("details")) {
+    			if(Utility.isNullOrEmpty(name)) {
+    	    		name = "名無し";
+    	    	}
+    	    	
+    	    	if(Utility.isNullOrEmpty(language)) {
+    	    		language = "不明";
+    	    	}
+    	    		
+    	    	if(Utility.isNullOrEmpty(birthPlace)) {
+    	    		Human human = new Human(name,language);
+    	    		msg = human.returnHumanInfo();
+    	    		
+    	    	}else if(birthPlace.equals("japan")) {
+    	    		Human japan = new Japanese(name,language);
+    	    		msg = japan.returnHumanInfo();
+    	    		
+    	    	}else if(birthPlace.equals("america")) {
+    	    		Human america = new Amerian(name,language);
+    	    		msg = america.returnHumanInfo();
+    	    		
+    	    	}
+    		}
     		
     	}
+    	       	   	
     	request.setAttribute("info", msg);
-
 
         // 結果画面へ
         request.getRequestDispatcher("result.jsp").forward(request, response);
