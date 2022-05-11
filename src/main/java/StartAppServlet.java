@@ -8,7 +8,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import app.App;
 import app.CardGameApp;
+import app.ClockApp;
+import app.DartsGameApp;
 import app.GameApp;
 
 /**
@@ -40,16 +43,33 @@ public class StartAppServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		
 		request.setCharacterEncoding("UTF-8");
+		App clock = new ClockApp();
+		
 	    String name = request.getParameter("name");
 	    String type = request.getParameter("type");
 
 	    String result = "";
 	    GameApp card = new CardGameApp(type);
-	    
-	    if (name != null && !name.isEmpty()) {
-	    	result = card.start(name);
+	    GameApp darts = new DartsGameApp(type);
+	    if(name != null && !name.isEmpty()) {
+	    	if(type.equals("トランプ")) {
+		    	result = card.start(name);
+		    	result += card.play();
+		    	
+		    }else if(type.equals("ダーツ")) {
+		    	result = darts.start(name);
+		    	result += darts.play();
+		    	
+		    }else if(type.equals("時計")) {
+		    	result = clock.start(name);
+		    	
+		    }else if(type.equals("その他")){
+		    	result = "アプリの実行に失敗しました。";
+		    	
+		    }
 	    	
 	    }
+	    
 	    
 	    request.setAttribute("resultData", result);
 	    request.getRequestDispatcher("/appStart.jsp").forward(request, response);
