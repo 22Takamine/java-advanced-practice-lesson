@@ -1,5 +1,4 @@
 package servlet;
-
 import java.io.IOException;
 
 import javax.servlet.ServletException;
@@ -31,8 +30,20 @@ public class SearchServlet extends HttpServlet {
     	
     	// ここに必要な処理を記述してください。
     	request.setCharacterEncoding("UTF-8");
-	    String name = request.getParameter("name");
+	    String english = request.getParameter("english");
 	    
+	    Dictionary dictionary = new Dictionary();
+	    String result= "";
+	    
+	    if(english != null && !english.isEmpty()) {
+	    	if((dictionary.getDictionaryInfo()).containsKey(english)) {
+	    		result = "英語:" + english + "日本語:"  + dictionary.getDictionaryInfo().get(english);
+	    		
+	    	}else {
+	    		result = "見つかりませんでした";
+	    	}
+	    }
+	    request.setAttribute("result", result);
         request.getRequestDispatcher("dictionary.jsp").forward(request, response);
     }
 
