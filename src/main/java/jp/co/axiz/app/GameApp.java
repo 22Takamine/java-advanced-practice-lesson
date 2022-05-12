@@ -1,16 +1,19 @@
-package app;
+package jp.co.axiz.app;
 
 public abstract class GameApp implements App{
-	public static String item = "何か";
+	private String item = "";
+	private int playTime = 0;
 	
 	public GameApp(String item){
 		this.item = item;
+		
 	}
+	
 	public GameApp() {
 		
 	}
 	
-	public abstract String play();
+	protected abstract String play();
 	
 	public String start(String name){
 		String mes = "";
@@ -18,5 +21,16 @@ public abstract class GameApp implements App{
 		mes += play();
 		return mes;
 	}
+
+	public int getPlayTime() {
+		return playTime;
+	}
+
+	public void setPlayTime(int playTime) {
+		this.playTime = playTime;
+	}
+	
+	
+	
 
 }

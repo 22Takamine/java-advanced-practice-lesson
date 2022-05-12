@@ -1,19 +1,24 @@
-package app;
+package jp.co.axiz.app;
 
 public class CardGameApp extends GameApp{
-	
+
 	public CardGameApp(String item){
 		super(item);
+		setPlayTime(5);
+
 	}
 	
 	public CardGameApp() {
 		
 	}
 	
-	public String play() {
-		String msg = "ババ抜きを行います。";
+	protected String play() {
+		String msg = "ババ抜きを行います。" ;
+		msg += "<br>";
 		return msg;
 	}
+	
+	
 	
 	
 	

@@ -30,7 +30,9 @@ public class SearchServlet extends HttpServlet {
             throws ServletException, IOException {
     	
     	// ここに必要な処理を記述してください。
-
+    	request.setCharacterEncoding("UTF-8");
+	    String name = request.getParameter("name");
+	    
         request.getRequestDispatcher("dictionary.jsp").forward(request, response);
     }
 
