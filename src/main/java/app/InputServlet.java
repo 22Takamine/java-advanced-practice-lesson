@@ -41,7 +41,11 @@ public class InputServlet extends HttpServlet {
             throws ServletException, IOException {
     	
     	// ここに必要な処理を記述してください。
-    	
+    	request.setCharacterEncoding("UTF-8");
+	    String carName = request.getParameter("carName");
+	    String bodyColor = request.getParameter("bodyColor");
+	    String maxSpead = request.getParameter("maxSpeed");
+
 
         // 結果画面へ遷移
         request.getRequestDispatcher("update.jsp").forward(request, response);
