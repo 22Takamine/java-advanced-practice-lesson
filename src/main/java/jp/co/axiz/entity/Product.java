@@ -44,7 +44,7 @@ public class Product {
     }
 
     public void setProductName(String productName) {
-        this.productName =  productName;
+    	this.productName =  productName;
     }
 
     public int getPrice() {
