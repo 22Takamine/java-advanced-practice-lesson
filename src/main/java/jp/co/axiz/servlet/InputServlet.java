@@ -1,4 +1,5 @@
-package app;
+package jp.co.axiz.servlet;
+
 
 import java.io.IOException;
 
@@ -7,6 +8,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import jp.co.axiz.entity.Car;
+import jp.co.axiz.util.Utility;
 
 /**
  * Servlet implementation class StartAppServlet
@@ -44,8 +48,22 @@ public class InputServlet extends HttpServlet {
     	request.setCharacterEncoding("UTF-8");
 	    String carName = request.getParameter("carName");
 	    String bodyColor = request.getParameter("bodyColor");
-	    String maxSpead = request.getParameter("maxSpeed");
-
+	    String maxSpeed = request.getParameter("maxSpeed");
+	    
+	    Integer speed = Utility.checkAndParseInt(maxSpeed);
+	    
+	    if(Utility.isNullOrEmpty(carName) || Utility.isNullOrEmpty(bodyColor) || speed == null) {
+	    	request.setAttribute("result", "登録できません。入力内容を見直してください。");
+	    	
+	    	request.getRequestDispatcher("input.jsp").forward(request, response);
+	    	
+	    }
+	    
+	    Car car = new Car(carName, bodyColor, speed);
+	    
+	    
+	    
+	    
 
         // 結果画面へ遷移
         request.getRequestDispatcher("update.jsp").forward(request, response);
