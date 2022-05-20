@@ -49,15 +49,16 @@ public class Car {
 	
 	public void setMaxSpeed(int maxSpeed) {
 		if(maxSpeed < 0) {
-			System.out.println("最高速度にこの値(" + maxSpeed + ")をセットすることはできませ");
+			System.out.println("最高速度にこの値(" + maxSpeed + ")をセットすることはできません");
 		}else {
 			this.maxSpeed = maxSpeed;
 		}
 	}
 	
 	public void setSpeed(int speed) {
-		if(speed > this.maxSpeed) {
-			System.out.println("現在速度にこの値(" + maxSpeed + ")をセットすることはできませ");
+		if(speed >= this.maxSpeed) {
+			System.out.println("現在速度にこの値(" + maxSpeed + ")をセットすることはできません");
+			this.speed = getMaxSpeed();
 		}else {
 			this.speed = speed;
 		}
