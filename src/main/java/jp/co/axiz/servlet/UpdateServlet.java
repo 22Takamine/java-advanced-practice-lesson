@@ -62,7 +62,7 @@ public class UpdateServlet extends HttpServlet {
 	    
 	    if(Utility.isNullOrEmpty(bodyColor) || Utility.isNullOrEmpty(speed)) {
 	    	request.setAttribute("result", "未入力の項目があります。");
-	    	
+	    	request.setAttribute("latestCar", historyList.get(0));
 	    	request.getRequestDispatcher("update.jsp").forward(request, response);
 	    }
 	    
